@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package np.com.keshavbist.chat;
+
+import "google/protobuf/timestamp.proto";
+
+option java_multiple_files = true;
+option java_package = "np.com.keshavbist.chat";
+option java_outer_classname = "ChatProto";
+
+// The greeting service definition.
+service ChatService {
+  rpc chatPool (stream ChatRequest) returns (stream ChatResponse) {}
+}
+
+message ChatRequest {
+  string user = 1;
+  string message = 2;
+  string token = 3;
+}
+
+message ChatResponse {
+    google.protobuf.Timestamp timestamp = 1;
+    ChatRequest message = 2;
+}
