@@ -32,9 +32,9 @@ public class ChatClient extends JFrame {
     private StreamObserver<ChatRequest> observer;
 
 
-    ChatClient() {
+    ChatClient(String server){
         super("Chat Client");
-        channel = ManagedChannelBuilder.forAddress("10.0.1.27", 8090)
+        channel = ManagedChannelBuilder.forAddress(server, 8090)
                 .usePlaintext(true)
                 .build();
         ChatServiceGrpc.ChatServiceStub asyncStub = ChatServiceGrpc.newStub(channel);
@@ -166,7 +166,10 @@ public class ChatClient extends JFrame {
                 new Runnable() {
                     @Override
                     public void run() {
-                        new ChatClient();
+                        if (args.length > 0)
+                            new ChatClient(args[0]);
+                        else
+                            new ChatClient("127.0.0.1");
                     }
                 }
         );
