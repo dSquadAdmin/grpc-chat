@@ -11,6 +11,7 @@ option java_outer_classname = "ChatProto";
 // The greeting service definition.
 service ChatService {
   rpc chatPool (stream ChatRequest) returns (stream ChatResponse) {}
+  rpc getClients(stream ConectReq) returns (stream Clients){}
 }
 
 message ChatRequest {
@@ -22,4 +23,14 @@ message ChatRequest {
 message ChatResponse {
     google.protobuf.Timestamp timestamp = 1;
     ChatRequest message = 2;
+}
+
+message ConectReq{
+    bool connect = 1;
+    string host = 2;
+    string user = 3;
+}
+
+message Clients{
+    ConectReq client = 1;
 }

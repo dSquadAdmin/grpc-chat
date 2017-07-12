@@ -24,6 +24,16 @@ public final class ChatProto {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_np_com_keshavbist_chat_ChatResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_np_com_keshavbist_chat_ConectReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_np_com_keshavbist_chat_ConectReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_np_com_keshavbist_chat_Clients_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_np_com_keshavbist_chat_Clients_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -39,11 +49,16 @@ public final class ChatProto {
       "oken\030\003 \001(\t\"s\n\014ChatResponse\022-\n\ttimestamp\030" +
       "\001 \001(\0132\032.google.protobuf.Timestamp\0224\n\007mes" +
       "sage\030\002 \001(\0132#.np.com.keshavbist.chat.Chat" +
-      "Request2j\n\013ChatService\022[\n\010chatPool\022#.np." +
-      "com.keshavbist.chat.ChatRequest\032$.np.com" +
-      ".keshavbist.chat.ChatResponse\"\000(\0010\001B%\n\026n" +
-      "p.com.keshavbist.chatB\tChatProtoP\001b\006prot",
-      "o3"
+      "Request\"8\n\tConectReq\022\017\n\007connect\030\001 \001(\010\022\014\n" +
+      "\004host\030\002 \001(\t\022\014\n\004user\030\003 \001(\t\"<\n\007Clients\0221\n\006" +
+      "client\030\001 \001(\0132!.np.com.keshavbist.chat.Co" +
+      "nectReq2\302\001\n\013ChatService\022[\n\010chatPool\022#.np",
+      ".com.keshavbist.chat.ChatRequest\032$.np.co" +
+      "m.keshavbist.chat.ChatResponse\"\000(\0010\001\022V\n\n" +
+      "getClients\022!.np.com.keshavbist.chat.Cone" +
+      "ctReq\032\037.np.com.keshavbist.chat.Clients\"\000" +
+      "(\0010\001B%\n\026np.com.keshavbist.chatB\tChatProt" +
+      "oP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -70,6 +85,18 @@ public final class ChatProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_np_com_keshavbist_chat_ChatResponse_descriptor,
         new java.lang.String[] { "Timestamp", "Message", });
+    internal_static_np_com_keshavbist_chat_ConectReq_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_np_com_keshavbist_chat_ConectReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_np_com_keshavbist_chat_ConectReq_descriptor,
+        new java.lang.String[] { "Connect", "Host", "User", });
+    internal_static_np_com_keshavbist_chat_Clients_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_np_com_keshavbist_chat_Clients_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_np_com_keshavbist_chat_Clients_descriptor,
+        new java.lang.String[] { "Client", });
     com.google.protobuf.TimestampProto.getDescriptor();
   }
 

@@ -42,6 +42,18 @@ public final class ChatServiceGrpc {
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
               np.com.keshavbist.chat.ChatResponse.getDefaultInstance()))
           .build();
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static final io.grpc.MethodDescriptor<np.com.keshavbist.chat.ConectReq,
+      np.com.keshavbist.chat.Clients> METHOD_GET_CLIENTS =
+      io.grpc.MethodDescriptor.<np.com.keshavbist.chat.ConectReq, np.com.keshavbist.chat.Clients>newBuilder()
+          .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+          .setFullMethodName(generateFullMethodName(
+              "np.com.keshavbist.chat.ChatService", "getClients"))
+          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              np.com.keshavbist.chat.ConectReq.getDefaultInstance()))
+          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              np.com.keshavbist.chat.Clients.getDefaultInstance()))
+          .build();
 
   /**
    * Creates a new async stub that supports all call types for the service
@@ -80,6 +92,13 @@ public final class ChatServiceGrpc {
       return asyncUnimplementedStreamingCall(METHOD_CHAT_POOL, responseObserver);
     }
 
+    /**
+     */
+    public io.grpc.stub.StreamObserver<np.com.keshavbist.chat.ConectReq> getClients(
+        io.grpc.stub.StreamObserver<np.com.keshavbist.chat.Clients> responseObserver) {
+      return asyncUnimplementedStreamingCall(METHOD_GET_CLIENTS, responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -89,6 +108,13 @@ public final class ChatServiceGrpc {
                 np.com.keshavbist.chat.ChatRequest,
                 np.com.keshavbist.chat.ChatResponse>(
                   this, METHODID_CHAT_POOL)))
+          .addMethod(
+            METHOD_GET_CLIENTS,
+            asyncBidiStreamingCall(
+              new MethodHandlers<
+                np.com.keshavbist.chat.ConectReq,
+                np.com.keshavbist.chat.Clients>(
+                  this, METHODID_GET_CLIENTS)))
           .build();
     }
   }
@@ -120,6 +146,14 @@ public final class ChatServiceGrpc {
         io.grpc.stub.StreamObserver<np.com.keshavbist.chat.ChatResponse> responseObserver) {
       return asyncBidiStreamingCall(
           getChannel().newCall(METHOD_CHAT_POOL, getCallOptions()), responseObserver);
+    }
+
+    /**
+     */
+    public io.grpc.stub.StreamObserver<np.com.keshavbist.chat.ConectReq> getClients(
+        io.grpc.stub.StreamObserver<np.com.keshavbist.chat.Clients> responseObserver) {
+      return asyncBidiStreamingCall(
+          getChannel().newCall(METHOD_GET_CLIENTS, getCallOptions()), responseObserver);
     }
   }
 
@@ -168,6 +202,7 @@ public final class ChatServiceGrpc {
   }
 
   private static final int METHODID_CHAT_POOL = 0;
+  private static final int METHODID_GET_CLIENTS = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -199,6 +234,9 @@ public final class ChatServiceGrpc {
         case METHODID_CHAT_POOL:
           return (io.grpc.stub.StreamObserver<Req>) serviceImpl.chatPool(
               (io.grpc.stub.StreamObserver<np.com.keshavbist.chat.ChatResponse>) responseObserver);
+        case METHODID_GET_CLIENTS:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.getClients(
+              (io.grpc.stub.StreamObserver<np.com.keshavbist.chat.Clients>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -223,6 +261,7 @@ public final class ChatServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new ChatServiceDescriptorSupplier())
               .addMethod(METHOD_CHAT_POOL)
+              .addMethod(METHOD_GET_CLIENTS)
               .build();
         }
       }
