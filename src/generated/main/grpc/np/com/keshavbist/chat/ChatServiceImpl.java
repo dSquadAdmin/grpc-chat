@@ -4,17 +4,15 @@ import com.google.protobuf.Timestamp;
 import io.grpc.stub.StreamObserver;
 
 import java.time.Instant;
-import java.util.*;
-import java.util.stream.Stream;
-
-import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
-import static np.com.keshavbist.chat.ChatServiceGrpc.METHOD_CHAT_POOL;
+import java.util.HashMap;
+import java.util.LinkedHashSet;
+import java.util.Map;
 
 /**
- * Created by kbist on 7/3/2017.
+ * Created by kbist on 7/18/2017.
  */
 public class ChatServiceImpl extends ChatServiceGrpc.ChatServiceImplBase {
-    private static LinkedHashSet <StreamObserver<ChatResponse>> observers = new LinkedHashSet<>();
+    private static LinkedHashSet<StreamObserver<ChatResponse>> observers = new LinkedHashSet<>();
     private static LinkedHashSet <StreamObserver<Clients>> chatObservers = new LinkedHashSet<>();
     private static Map<String, Clients> clients = new HashMap<>();
     @Override

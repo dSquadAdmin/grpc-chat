@@ -1,6 +1,7 @@
 buildscript {
     repositories {
         mavenCentral()
+        mavenLocal()
     }
     dependencies {
         classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.1'
@@ -14,8 +15,8 @@ plugins {
   id "idea"
 }
 
-group 'np.com.keshavbist.grpc'
-version '1.0-SNAPSHOT'
+group 'np.com.keshavbist.chat'
+version '1.0.0'
 
 protobuf {
     protoc {
@@ -42,28 +43,27 @@ targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile 'junit:junit:4.12'
     compile 'io.grpc:grpc-all:1.4.0'
+    compile 'mysql:mysql-connector-java:5.1.6'
+    compile 'org.fxmisc.richtext:richtextfx:0.6.10'
+    compile 'org.controlsfx:controlsfx:8.40.10'
+    compile 'org.slf4j:slf4j-api:1.5.6'
+    compile 'org.slf4j:slf4j-simple:1.5.6'
 }
 
-idea {
-    module {
-        sourceDirs += file("${projectDir}/src/generated/main/java");
-        sourceDirs += file("${projectDir}/src/generated/main/grpc");
+
+sourceSets.main{
+    java{
+        srcDirs = ["src/generated/main/java", "src/generated/main/grpc", "src/main/java"]
     }
-}
-
-task runServer(type: JavaExec) {
-    classpath = sourceSets.main.runtimeClasspath
-    main = 'np.com.keshavbist.chat.ChatServer'
-}
-
-task runClient(type: JavaExec) {
-    classpath = sourceSets.main.runtimeClasspath
-    main = 'np.com.keshavbist.chat.ChatClient'
+    resources{
+        srcDirs "src/resources/"
+    }
 }
 
 startScripts.enabled = false
@@ -75,7 +75,7 @@ task chatServer(type: CreateStartScripts) {
     classpath = jar.outputs.files + project.configurations.runtime
 }
 task chatClient(type: CreateStartScripts) {
-    mainClassName = "np.com.keshavbist.chat.ChatClient"
+    mainClassName = "np.com.keshavbist.chat.client.login.MainLauncher"
     applicationName = "chat-client"
     outputDir = new File(project.buildDir, 'tmp')
     classpath = jar.outputs.files + project.configurations.runtime

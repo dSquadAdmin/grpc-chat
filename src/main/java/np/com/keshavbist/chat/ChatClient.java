@@ -3,6 +3,7 @@ package np.com.keshavbist.chat;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -203,9 +204,9 @@ public class ChatClient extends JFrame {
 
         centerpane = new JPanel();
         centerpane.setLayout(new FlowLayout());
-        centerpane.add(scrollPane);
+        //centerpane.add(scrollPane);
         this.add(sidepanel, BorderLayout.WEST);
-        this.add(centerpane, BorderLayout.CENTER);
+        this.add(scrollPane, BorderLayout.CENTER);
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
